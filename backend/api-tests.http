@@ -1,0 +1,66 @@
+### Register User
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+  "name": "Alice",
+  "email": "alice@example.com",
+  "password": "123456"
+}
+
+### Login
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+  "email": "alice@example.com",
+  "password": "123456"
+}
+
+### Create Task
+POST http://localhost:5000/tasks/create
+// Bearer <your_token> below
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YmNhMWIyYzEwMjI0ZjEyOGM2NDNlYiIsImlhdCI6MTc1NzE5Mzg4OSwiZXhwIjoxNzU3MjgwMjg5fQ.-BUvegBnrFv3bPhPoZ2SUx15gU76JFQXTTzbx5WPON8
+Content-Type: application/json
+
+{
+  "title": "Math Homework",
+  "description": "Solve 5 equations",
+  "rewardCredits": 2
+}
+
+### List Open Tasks
+GET http://localhost:5000/tasks/list
+// Bearer <your_token> below
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YmNhMWIyYzEwMjI0ZjEyOGM2NDNlYiIsImlhdCI6MTc1NzE5Mzg4OSwiZXhwIjoxNzU3MjgwMjg5fQ.-BUvegBnrFv3bPhPoZ2SUx15gU76JFQXTTzbx5WPON8
+
+### Claim a Task - put your task id after claim/
+POST http://localhost:5000/tasks/claim/68bca6bc08184c58e171c77f
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YmNhMWIyYzEwMjI0ZjEyOGM2NDNlYiIsImlhdCI6MTc1NzE5Mzg4OSwiZXhwIjoxNzU3MjgwMjg5fQ.-BUvegBnrFv3bPhPoZ2SUx15gU76JFQXTTzbx5WPON8
+
+### Complete a Task
+POST http://localhost:5000/tasks/complete/68bca6bc08184c58e171c77f
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YmNhMWIyYzEwMjI0ZjEyOGM2NDNlYiIsImlhdCI6MTc1NzE5Mzg4OSwiZXhwIjoxNzU3MjgwMjg5fQ.-BUvegBnrFv3bPhPoZ2SUx15gU76JFQXTTzbx5WPON8
+
+### Rating
+POST http://localhost:5000/tasks/rate/68bca6bc08184c58e171c77f
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YmNhMWIyYzEwMjI0ZjEyOGM2NDNlYiIsImlhdCI6MTc1NzE5Mzg4OSwiZXhwIjoxNzU3MjgwMjg5fQ.-BUvegBnrFv3bPhPoZ2SUx15gU76JFQXTTzbx5WPON8
+Content-Type: application/json
+
+{
+  "rating": 4,
+  "feedback": "Good job, but could be faster."
+}
+
+### Raise a dispute
+POST http://localhost:5000/tasks/dispute/68bca6bc08184c58e171c77f
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YmNhMWIyYzEwMjI0ZjEyOGM2NDNlYiIsImlhdCI6MTc1NzE5Mzg4OSwiZXhwIjoxNzU3MjgwMjg5fQ.-BUvegBnrFv3bPhPoZ2SUx15gU76JFQXTTzbx5WPON8
+Content-Type: application/json
+
+{
+  "reason": "Work was incomplete / fake."
+}
+
+### view all disputes for a user
+GET http://localhost:5000/tasks/disputes
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YmNhMWIyYzEwMjI0ZjEyOGM2NDNlYiIsImlhdCI6MTc1NzE5Mzg4OSwiZXhwIjoxNzU3MjgwMjg5fQ.-BUvegBnrFv3bPhPoZ2SUx15gU76JFQXTTzbx5WPON8
